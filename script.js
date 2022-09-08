@@ -1,44 +1,74 @@
 //parameters vast
 var canvx = 650;
 var canvy = 750;
-var ts = 70;
+var ts1 = 70;
+var ts2 = 16
 
 //parameters changing
 let gamestate = 0;
+
+//parameters other
+let text1, text2, text3, img1, gif1;
+
+function preload() {
+  text1 = "start";
+  text2 = "Tutorial";
+  text3 = "Press escape to return to main menu"
+  img1 = loadImage("assets/logo_si.png");
+  gif1 = loadImage("assets/space-invaders-gif.gif");
+}
 
 function setup() {
   createCanvas(canvx, canvy);
 }
 
 function draw() {
- 
   background(10);
-  textSize(ts);
+  image(img1, 140, 100, 370, 126)
+  image(gif1, 199.5, 524.5)
+  textSize(ts1);
+  textStyle(NORMAL);
   fill(200);
   rect(50, 400, 250, 100);
   fill(10);
   rect(60, 410, 230, 80);
   fill(255);
-  text("Start", 100, 475)
+  text(text1, 100, 475);
   fill(200);
   rect(350, 400, 250, 100);
   fill(10);
   rect(360, 410, 230, 80);
   fill(255);
-  text("Tutorial", 360, 475)
+  text(text2, 360, 475);
   if (gamestate == 1) {
     background(100);
-    if (mouseButton == RIGHT) {
-      gamestate = 0;
-    }
+    textSize(ts2);
+    fill(225);
+    textStyle(ITALIC)
+    text(text3, 10, 20)
   }
   if (gamestate == 2) {
-    background(255);
-    if (mouseButton == RIGHT) {
-      gamestate = 0;
-    }
+    background(10);
+    textSize(ts2);
+    fill(225);
+    textStyle(ITALIC)
+    text(text3, 10, 20)
+    textStyle(NORMAL);
+    textSize(ts1);
+    fill(0,191,255);
+    rect(75,50,500,100);
+    fill(225);
+    text(text2, 200, 125);
+
   }
 }
+
+function keyPressed() {
+  if (keyCode === ESCAPE) {
+    gamestate = 0; 
+  }
+}
+
 
 function mouseClicked() {
   if (gamestate == 0){
