@@ -1,20 +1,40 @@
 //parameters vast
 var canvx = 650;
 var canvy = 750;
-var ts1 = 70;
-var ts2 = 16
 
 //parameters changing
 let gamestate = 0;
 
 //parameters other
-let text1, text2, text3, img1, gif1;
+let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, gif1;
+
+//classes
+class type1{
+  constructor(x, y){
+    this.x = x
+    this.y = y
+  }
+
+  draw(){
+    image(giftype1, this.x, this.y, 22, 16)
+  }
+}
+
+
+//functions
 
 function preload() {
-  text1 = "start";
+  ts1 = 70;
+  ts2 = 16;
+  ts3 = 25;
+  text1 = "Start";
   text2 = "Tutorial";
-  text3 = "Press escape to return to main menu"
-  img1 = loadImage("assets/logo_si.png");
+  text3 = "Press escape to return to main menu";
+  text4 = "Objective: Shoot the aliens";
+  text5 = "Try to survive 2 rounds and kill the end boss"
+  text6 = "Press escape to return to main menu";
+  img1 = loadImage("assets/logo-si.png");
+  giftype1 = loadImage("assets/invader-type-1.gif");
   gif1 = loadImage("assets/space-invaders-gif.gif");
 }
 
@@ -59,6 +79,12 @@ function draw() {
     rect(75,50,500,100);
     fill(225);
     text(text2, 200, 125);
+    textSize(ts3);
+    text(text4, 50, 250);
+    textSize(ts3);
+    text(text5, 50, 285);
+    textSize(ts3);
+    text(text6, 50, 320);
 
   }
 }
