@@ -13,15 +13,20 @@ class type1{
   constructor(x, y){
     this.x = x
     this.y = y
+    this.vx = 1
   }
 
   draw(){
     image(giftype1, this.x, this.y, 22, 16)
+    if(this.x + this.vx == 0 || this.x + this.vx == canvx-16){
+      this.vx *= -1;
+      this.y -= 30;
+    }
   }
 }
 
-
 //functions
+
 
 function preload() {
   ts1 = 70;
@@ -85,7 +90,6 @@ function draw() {
     text(text5, 50, 285);
     textSize(ts3);
     text(text6, 50, 320);
-
   }
 }
 
