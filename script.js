@@ -4,20 +4,22 @@ var canvy = 750;
 
 //parameters changing
 let gamestate = 0;
+var type1s = 0.5;
 
 //parameters other
-let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, gif1;
+let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, imgplayer1, gif1;
 
 //classes
 class type1{
   constructor(x, y){
-    this.x = x
-    this.y = y
-    this.vx = 1
+    this.x = x;
+    this.y = y;
+    this.vx = type1s;
   }
 
   draw(){
-    image(giftype1, this.x, this.y, 22, 16)
+    image(giftype1, this.x, this.y, 44, 32)
+    this.x = this.x + this.vx;
     if(this.x + this.vx == 0 || this.x + this.vx == canvx-16){
       this.vx *= -1;
       this.y -= 30;
@@ -26,7 +28,6 @@ class type1{
 }
 
 //functions
-
 
 function preload() {
   ts1 = 70;
@@ -39,6 +40,7 @@ function preload() {
   text5 = "Try to survive 2 rounds and kill the end boss"
   text6 = "Press escape to return to main menu";
   img1 = loadImage("assets/logo-si.png");
+  imgplayer1 = loadImage("assets/Player.png");
   giftype1 = loadImage("assets/invader-type-1.gif");
   gif1 = loadImage("assets/space-invaders-gif.gif");
 }
@@ -48,29 +50,18 @@ function setup() {
 }
 
 function draw() {
-  background(10);
-  image(img1, 140, 100, 370, 126)
-  image(gif1, 199.5, 524.5)
-  textSize(ts1);
-  textStyle(NORMAL);
-  fill(200);
-  rect(50, 400, 250, 100);
-  fill(10);
-  rect(60, 410, 230, 80);
-  fill(255);
-  text(text1, 100, 475);
-  fill(200);
-  rect(350, 400, 250, 100);
-  fill(10);
-  rect(360, 410, 230, 80);
-  fill(255);
-  text(text2, 360, 475);
+  if (gamestate == 0) {
+    menu()
+  }
   if (gamestate == 1) {
     background(100);
     textSize(ts2);
     fill(225);
-    textStyle(ITALIC)
-    text(text3, 10, 20)
+    textStyle(ITALIC);
+    text(text3, 10, 20);
+    var t1 = new type1(10, 30);
+    image(imgplayer1, 100, 500, 75, 75);
+    t1.draw()
   }
   if (gamestate == 2) {
     background(10);
@@ -93,12 +84,36 @@ function draw() {
   }
 }
 
+function menu(){
+  background(10);
+  image(img1, 140, 100, 370, 126)
+  image(gif1, 199.5, 524.5)
+  textSize(ts1);
+  textStyle(NORMAL);
+  fill(200);
+  rect(50, 400, 250, 100);
+  fill(10);
+  rect(60, 410, 230, 80);
+  fill(255);
+  text(text1, 100, 475);
+  fill(200);
+  rect(350, 400, 250, 100);
+  fill(10);
+  rect(360, 410, 230, 80);
+  fill(255);
+  text(text2, 360, 475);
+  
+}
+
+function run(){
+  
+}
+
 function keyPressed() {
   if (keyCode === ESCAPE) {
     gamestate = 0; 
   }
 }
-
 
 function mouseClicked() {
   if (gamestate == 0){
