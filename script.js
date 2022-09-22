@@ -12,39 +12,6 @@ var t1, player;
 let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, imgplayer1, gif1;
 
 //classes
-class Type1{
-  constructor(x, y){
-    this.x = x;
-    this.y = y;
-    this.vx = 1;
-  }
-
-  draw(){
-    let tV = this.vx * vMult;
-    if(this.x + tV < 0 || this.x + tV > canvx-44){
-      this.vx *= -1;
-      this.y += 50;
-    }
-    image(giftype1, this.x, this.y, 44, 32);
-    this.x += tV;
-  }
-}
-
-class Player{
-  constructor(x, y, vx){
-    this.x = x;
-    this.y = y;
-    this.vx = vx;
-  }
-
-  draw(){
-    this.x += this.vx;
-    image(imgplayer1, this.x, this.y, 75, 75);
-    if (this.x >= 0 && this.x + 50 <= 650) {
-      this.x += this.vx;
-    }
-  }
-}
 
 //functions
 
@@ -147,10 +114,14 @@ function keyPressed() {
     gamestate = 0; 
   } 
   if (keyCode === LEFT_ARROW) {
-    player.vx = -2;
+    if (player.x > 0) {
+      player.vx = -4;
+    }
   }
   if (keyCode === RIGHT_ARROW) {
-    player.vx = 2;
+    if (player.x + 75 < 650) {
+      player.vx = 4;
+    }
   }
 }
 
