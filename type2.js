@@ -1,7 +1,7 @@
-class Type1{
+class Type2{
   constructor(x, y){
     this.x = x;
-    this.y = invader_y;
+    this.y = invader_y+40;
     this.vx = 1;
   }
 
@@ -11,7 +11,7 @@ class Type1{
       this.vx *= -1;
       this.y += 80;
     }
-    image(giftype1, this.x, this.y, 44, 32);
+    image(giftype2, this.x, this.y, 44, 32);
     this.x += tV;
   }
 }

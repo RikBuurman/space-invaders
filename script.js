@@ -5,13 +5,13 @@ var canvy = 750;
 //parameters changing
 let gamestate = 0;
 var vMult = 1;
+var invader_y = 30
 
 //parameters other
 let t1_ = []
+let t2_ =[]
 var t1, player;
-let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, imgplayer1, gif1;
-
-//classes
+let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, imgplayer1, imgbullet1, giftype1, giftype2, gif1;
 
 //functions
 
@@ -23,12 +23,14 @@ function preload() {
   text2 = "Tutorial";
   text3 = "Press escape to return to main menu";
   text4 = "Objective: Shoot the aliens";
-  text5 = "Try to survive 2 rounds and kill the end boss"
+  text5 = "Try to survive 2 rounds and kill the end boss";
   text6 = "Press escape to return to main menu";
   img1 = loadImage("assets/logo-si.png");
   imgplayer1 = loadImage("assets/Player.png");
   giftype1 = loadImage("assets/invader-type-1.gif");
+  giftype2 = loadImage("assets/invader-type-2.gif");
   gif1 = loadImage("assets/space-invaders-gif.gif");
+  imgbullet1 = loadImage("assets/bullet-player.png")
 }
 
 function setup() {
@@ -93,7 +95,10 @@ function newgame() {
   for(let i = 0; i < 9; i++){
     t1_.push(new Type1([i]*((canvx-44)/9), 30))
   }
-  t1 = new Type1(10, 30);
+  for(let i = 0; i < 9; i++){
+    t2_.push(new Type2([i]*((canvx-44)/9), 70))
+  }
+  //t1 = new Type1(10, 30);
   player = new Player(325, 600, 0)
 }
 function run(){
@@ -102,9 +107,12 @@ function run(){
   fill(225);
   textStyle(ITALIC);
   text(text3, 10, 20);
-  for(let i = 0; i < t1_.length; i++){
-    t1_[i].draw()
-  }
+  t1_.forEach((a) => {
+    a.draw()
+  })
+  t2_.forEach((b) => {
+    b.draw()
+  })
   //t1.draw()
   player.draw()
 }
@@ -147,4 +155,4 @@ function mouseClicked() {
       }
     }
   }
-}
+}               
