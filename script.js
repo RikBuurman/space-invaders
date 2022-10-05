@@ -4,18 +4,22 @@ var canvy = 750;
 
 //parameters changing
 let gamestate = 0;
-var vMult = 1;
+var vMult = 0.3;
 var invader_y = 30
 
 //parameters other
 let t1_ = []
 let t2_ =[]
 var t1, player;
-let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, imgplayer1, imgbullet1, giftype1, giftype2, gif1;
+let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, imgplayer1, imgbullet1, giftype1, giftype2, giftype3, gif1;
+//ts = textsize
+//t = text
+
 
 //functions
 
 function preload() {
+//ts = textsize 
   ts1 = 70;
   ts2 = 16;
   ts3 = 25;
@@ -29,8 +33,9 @@ function preload() {
   imgplayer1 = loadImage("assets/Player.png");
   giftype1 = loadImage("assets/invader-type-1.gif");
   giftype2 = loadImage("assets/invader-type-2.gif");
+  giftype3 = loadImage("assets/invader-type-3.gif");
   gif1 = loadImage("assets/space-invaders-gif.gif");
-  imgbullet1 = loadImage("assets/bullet-player.png")
+  imgbullet1 = loadImage("assets/bullet-player.png");
 }
 
 function setup() {
