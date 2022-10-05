@@ -4,15 +4,16 @@ var canvy = 750;
 
 //parameters changing
 let gamestate = 0;
-var vMult = 0.3;
+var vMult;
 var invader_y = 30
 var round1 = 0
 
 //parameters other
 let t1_ = []
-let t2_ =[]
+let t2_ = []
+let t3_ = []
 var t1, player;
-let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, imgplayer1, imgbullet1, giftype1, giftype2, giftype3, gif1;
+let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, img1, imgplayer1, imgbullet1, giftype1, giftype2, giftype3, gif1, song;
 //ts = textsize
 //t = text
 
@@ -37,6 +38,7 @@ function preload() {
   giftype3 = loadImage("assets/invader-type-3.gif");
   gif1 = loadImage("assets/space-invaders-gif.gif");
   imgbullet1 = loadImage("assets/bullet-player.png");
+  //song = loadSound("assets/music1.mp3");
 }
 
 function setup() {
@@ -44,6 +46,7 @@ function setup() {
   if(round1 == 0){
     spawnloopround1()
   }
+  //song.loop()
 }
 
 function draw() {
@@ -56,6 +59,7 @@ function draw() {
   if (gamestate == 2) {
     tutorial()
   }
+  //song.play();
 }
 
 function menu() {
@@ -111,6 +115,9 @@ function run(){
   t2_.forEach((b) => {
     b.draw()
   })
+  t3_.forEach((c) => {
+    c.draw()
+  })
   //t1.draw()
   player.draw()
 }
@@ -156,11 +163,15 @@ function mouseClicked() {
 }
 
 function spawnloopround1() {
-    for(let i = 0; i < 9; i++){
-    t1_.push(new Type1([i]*((canvx-44)/9), 30))
+  vMult = 0.5
+  for(let i = 0; i < 9; i++){
+    t1_.push(new Type1([i]*((canvx-44)/9), 30, 1, 3))
   }
   for(let i = 0; i < 9; i++){
-    t2_.push(new Type2([i]*((canvx-44)/9), 70))
+    t2_.push(new Type2([i]*((canvx-44)/9), 30, 2, 3))
+  }
+  for(let i = 0; i < 9; i++){
+    t3_.push(new Type3([i]*((canvx-44)/9), 30, 3, 3))
   }
   //t1 = new Type1(10, 30);
   player = new Player(325, 600, 0)
