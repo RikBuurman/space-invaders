@@ -6,6 +6,7 @@ var canvy = 750;
 let gamestate = 0;
 var vMult = 0.3;
 var invader_y = 30
+var round1 = 0
 
 //parameters other
 let t1_ = []
@@ -40,7 +41,9 @@ function preload() {
 
 function setup() {
   createCanvas(canvx, canvy);
-  newgame()
+  if(round1 == 0){
+    spawnloopround1()
+  }
 }
 
 function draw() {
@@ -96,16 +99,6 @@ function tutorial() {
   text(text6, 50, 320);
 }
 
-function newgame() {
-  for(let i = 0; i < 9; i++){
-    t1_.push(new Type1([i]*((canvx-44)/9), 30))
-  }
-  for(let i = 0; i < 9; i++){
-    t2_.push(new Type2([i]*((canvx-44)/9), 70))
-  }
-  //t1 = new Type1(10, 30);
-  player = new Player(325, 600, 0)
-}
 function run(){
   background(100);
   textSize(ts2);
@@ -160,4 +153,15 @@ function mouseClicked() {
       }
     }
   }
-}               
+}
+
+function spawnloopround1() {
+    for(let i = 0; i < 9; i++){
+    t1_.push(new Type1([i]*((canvx-44)/9), 30))
+  }
+  for(let i = 0; i < 9; i++){
+    t2_.push(new Type2([i]*((canvx-44)/9), 70))
+  }
+  //t1 = new Type1(10, 30);
+  player = new Player(325, 600, 0)
+}
