@@ -11,6 +11,9 @@ class Type3{
     if(this.x + tV < -88 || this.x + tV > canvx+44){
       this.vx *= -1;
       this.y += this.totalrow*40;
+      if(this.y > 525){
+        gamestate = 3
+      }
     }
     image(giftype3, this.x, this.y, 44, 32);
     this.x += tV;
