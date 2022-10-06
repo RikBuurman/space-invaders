@@ -11,7 +11,7 @@ class Type3{
     if(this.x + tV < -88 || this.x + tV > canvx+44){
       this.vx *= -1;
       this.y += this.totalrow*40;
-      if(this.y > 525){
+      if(this.y > 550){
         gamestate = 3
       }
     }

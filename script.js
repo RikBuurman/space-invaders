@@ -13,10 +13,9 @@ let t1_ = []
 let t2_ = []
 let t3_ = []
 var t1, player;
-let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, text7, img1, imgplayer1, imgbullet1, giftype1, giftype2, giftype3, gif1, song;
+let ts1, ts2, ts3, text1, text2, text3, text4, text5, text6, text7, text8, img1, imgplayer1, imgbullet1, giftype1, giftype2, giftype3, gif1, song;
 //ts = textsize
 //t = text
-
 
 //functions
 
@@ -32,6 +31,7 @@ function preload() {
   text5 = "Try to survive 2 rounds and kill the end boss";
   text6 = "Press escape to return to main menu";
   text7 = "Game Over!";
+  text8 = "Reload the browser to try again!"
   img1 = loadImage("assets/logo-si.png");
   imgplayer1 = loadImage("assets/Player.png");
   giftype1 = loadImage("assets/invader-type-1.gif");
@@ -108,7 +108,7 @@ function tutorial() {
 }
 
 function run(){
-  background(100);
+  background(10);
   textSize(ts2);
   fill(225);
   textStyle(ITALIC);
@@ -129,10 +129,16 @@ function run(){
 function gameover(){
   background(10);
   textSize(ts1);
-  text(text7, 60, 100);
+  textStyle(NORMAL);
+  text(text7, 125, 100);
+  textSize(ts3);
+  text(text8,75,200);
 }
 
 function keyPressed() {
+  if (keyCode === ENTER) { //temp 
+    gamestate = 3; 
+  } 
   if (keyCode === ESCAPE) {
     gamestate = 0; 
   } 
