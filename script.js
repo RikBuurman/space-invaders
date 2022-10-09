@@ -6,13 +6,16 @@ var canvy = 750;
 let gamestate = 0;
 var vMult;
 var invader_y = 30
-var round1 = 0
+var roundnumber = 2
 
 //parameters other
 let t1_ = []
+let t1_2 = []
 let t2_ = []
+let t2_2 = []
 let t3_ = []
-var t1, player;
+let t3_2 = []
+var player;
 let ts1, ts2, ts3, ts4, text1, text2, text3, text4, text5, text6, text7, text8, img1, imgplayer1, imgbullet1, giftype1, giftype2, giftype3, gif1, song, font1;
 //ts = textsize
 //t = text
@@ -46,9 +49,7 @@ function preload() {
 
 function setup() {
   createCanvas(canvx, canvy);
-  if(round1 == 0){
-    spawnloopround1()
-  }
+  spawnloop()
   song.loop()
   song.play();
 }
@@ -118,13 +119,18 @@ function run(){
   t1_.forEach((a) => {
     a.draw()
   })
+  t1_2.forEach((d) => {
+    d.draw()
+  })
   t2_.forEach((b) => {
     b.draw()
+  })
+  t2_2.forEach((e) => {
+    e.draw()
   })
   t3_.forEach((c) => {
     c.draw()
   })
-  //t1.draw()
   player.draw()
 }
 
@@ -180,8 +186,18 @@ function mouseClicked() {
   }
 }
 
-function spawnloopround1() {
-  vMult = 0.4
+function spawnloop() {
+  vMult = 0.3
+  if(roundnumber == 1) {
+    round1()
+  }
+  if(roundnumber == 2) {
+    round2()
+  }
+  player = new Player(325, 600, 0)
+}
+
+function round1() {
   for(let i = 0; i < 9; i++){
     t1_.push(new Type1([i]*((canvx-44)/9), 30, 1, 3))
   }
@@ -191,26 +207,22 @@ function spawnloopround1() {
   for(let i = 0; i < 9; i++){
     t3_.push(new Type3([i]*((canvx-44)/9), 30, 3, 3))
   }
-  //t1 = new Type1(10, 30);
-  player = new Player(325, 600, 0)
 }
 
-function spawnloopround2() {
-  vmult = 0.8
+function round2() {2
   for(let i = 0; i < 9; i++){
     t1_.push(new Type1([i]*((canvx-44)/9), 30, 1, 5))
   }
-  for(let i = 10; i < 19; i++){
-    t1_.push(new Type1(([i]-10)*((canvx-44)/9), 30, 2, 5))
+  for(let i = 0; i < 9; i++){
+    t1_2.push(new Type1([i]*((canvx-44)/9), 30, 2, 5))
   }
   for(let i = 0; i < 9; i++){
     t2_.push(new Type2([i]*((canvx-44)/9), 30, 3, 5))
   }
-  for(let i = 10; i < 19; i++){
-    t2_.push(new Type2(([i]-10)*((canvx-44)/9), 30, 4, 5))
+  for(let i = 0; i < 9; i++){
+    t2_2.push(new Type2([i]*((canvx-44)/9), 30, 4, 5))
   }
   for(let i = 0; i < 9; i++){
     t3_.push(new Type3([i]*((canvx-44)/9), 30, 5, 5))
   }
-  player = new Player(325, 600, 0)
 }
