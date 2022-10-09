@@ -181,7 +181,7 @@ function mouseClicked() {
 }
 
 function spawnloopround1() {
-  vMult = 0.5
+  vMult = 0.4
   for(let i = 0; i < 9; i++){
     t1_.push(new Type1([i]*((canvx-44)/9), 30, 1, 3))
   }
@@ -192,5 +192,25 @@ function spawnloopround1() {
     t3_.push(new Type3([i]*((canvx-44)/9), 30, 3, 3))
   }
   //t1 = new Type1(10, 30);
+  player = new Player(325, 600, 0)
+}
+
+function spawnloopround2() {
+  vmult = 0.8
+  for(let i = 0; i < 9; i++){
+    t1_.push(new Type1([i]*((canvx-44)/9), 30, 1, 5))
+  }
+  for(let i = 10; i < 19; i++){
+    t1_.push(new Type1(([i]-10)*((canvx-44)/9), 30, 2, 5))
+  }
+  for(let i = 0; i < 9; i++){
+    t2_.push(new Type2([i]*((canvx-44)/9), 30, 3, 5))
+  }
+  for(let i = 10; i < 19; i++){
+    t2_.push(new Type2(([i]-10)*((canvx-44)/9), 30, 4, 5))
+  }
+  for(let i = 0; i < 9; i++){
+    t3_.push(new Type3([i]*((canvx-44)/9), 30, 5, 5))
+  }
   player = new Player(325, 600, 0)
 }
